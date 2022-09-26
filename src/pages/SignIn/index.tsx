@@ -1,21 +1,21 @@
-import React, { useCallback, useRef } from 'react';
-import { Image, View, ScrollView, KeyboardAvoidingView, Platform, TextInput, Alert } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/mobile';
+import React, { useCallback, useRef } from 'react';
+import { Alert, Image, KeyboardAvoidingView, Platform, ScrollView, TextInput, View } from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 import * as Yup from 'yup';
-
-import { useAuth } from '../../hooks/auth';
-
-import getValidationErrors from '../../utils/getValidationErrors';
-
-import Input from '../../components/Input';
-import Button from '../../components/Button';
-
 import logoImg from '../../assets/logo.png';
+import Button from '../../components/Button';
+import Input from '../../components/Input';
+import { useAuth } from '../../hooks/auth';
+import getValidationErrors from '../../utils/getValidationErrors';
+import { CAB, CABText, Container, FP, FPText, Title } from './styles';
 
-import { Container, Title, FP, FPText, CAB, CABText } from './styles';
+
+
+
+
 
 interface SignInFormData {
     email: string;
@@ -27,7 +27,7 @@ const SignIn: React.FC = () => {
     const passwordInputRef = useRef<TextInput>(null);
     const navigation = useNavigation();
     const { signIn } = useAuth();
-
+    
     const handleSignIn = useCallback(
         async (data: SignInFormData) => {
           try {
@@ -100,10 +100,10 @@ const SignIn: React.FC = () => {
                                 placeholder="Senha"
                                 secureTextEntry
                                 returnKeyType="send"
-                                onSubmitEditing={() => formRef.current?.submitForm}
+                                onSubmitEditing={() => formRef.current?.submitForm()}
                             />
 
-                            <Button onPress={() => formRef.current?.submitForm}>Entrar</Button>
+                            <Button onPress={() => formRef.current?.submitForm()}>Entrar</Button>
                         </Form>
 
                         <FP onPress={() => {}}>
